@@ -571,6 +571,7 @@ export class WebSocket extends SdkObject {
     SocketError: 'socketerror',
     FrameReceived: 'framereceived',
     FrameSent: 'framesent',
+    Message: 'message'
   };
 
   constructor(parent: SdkObject, url: string) {
@@ -602,6 +603,10 @@ export class WebSocket extends SdkObject {
 
   error(errorMessage: string) {
     this.emit(WebSocket.Events.SocketError, errorMessage);
+  }
+
+  message(message: string) {
+    this.emit(WebSocket.Events.Message, message);
   }
 
   closed() {
